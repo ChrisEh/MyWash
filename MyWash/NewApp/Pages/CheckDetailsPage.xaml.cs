@@ -12,21 +12,23 @@ using Xamarin.Forms.Xaml;
 namespace NewApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RequestPickupPage : ContentPage
+    public partial class CheckDetailsPage : ContentPage
     {
-        public RequestPickupPage()
+        public CheckDetailsPage(User user)
         {
             InitializeComponent();
+            EntStreet.Text = user.StreetName;
+            EntPhone.Text = user.PhoneNumber;
+            EntHouseNumber.Text = user.HouseNumber;
+            EntPostCode.Text = user.PostCode;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var order = new Order()
             {
-                Address = EntAddress.Text,
                 UserId = Preferences.Get("userId", 0),
                 Phone = EntPhone.Text,
-                FullName = EntName.Text,
                 OrderPlaced = DateTime.Now
             };
 
@@ -45,6 +47,12 @@ namespace NewApp.Pages
         private async void TapBack_Tapped(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
+        }
+
+        private async void BtnConfirm_Clicked(object sender, EventArgs e)
+        {
+            await ApiService.UpdateUserDetailsAsync(Preferences.Get("userId", 0).ToString(), EntStreet.Text,
+                EntHouseNumber.Text, EntPostCode.Text, EntPlace.Text, EntPhone.Text);
         }
     }
 }

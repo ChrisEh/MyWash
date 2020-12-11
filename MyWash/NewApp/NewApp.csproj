@@ -20,8 +20,8 @@
     <Compile Update="Pages\PickupsPage.xaml.cs">
       <DependentUpon>PickupsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\RequestPickupPage.xaml.cs">
-      <DependentUpon>RequestPickupPage.xaml</DependentUpon>
+    <Compile Update="Pages\CheckDetailsPage.xaml.cs">
+      <DependentUpon>CheckDetailsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -38,7 +38,7 @@
     <EmbeddedResource Update="Pages\PickupsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\RequestPickupPage.xaml">
+    <EmbeddedResource Update="Pages\CheckDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\SignUpPage.xaml">

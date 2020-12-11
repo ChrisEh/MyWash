@@ -32,6 +32,32 @@ namespace NewApp.Services
             return true;
         }
 
+        public static async Task<User> GetCurrentUser(string userId)
+        {
+            var httpClient = AppSettings.GetClient();
+            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Accounts/GetUser/{userId}");
+            return JsonConvert.DeserializeObject<User>(response);
+        }
+
+        public static async Task<bool> UpdateUserDetailsAsync(string id, string streetName, string houseNumber, string postCode, string place, string phoneNumber)
+        {
+            var httpClient = AppSettings.GetClient();
+            var update = new UpdateUserDetails()
+            {
+                Id = id,
+                StreetName = streetName,
+                HouseNumber = houseNumber,
+                PostCode = postCode,
+                Place = place,
+                PhoneNumber = phoneNumber
+            };
+
+            var json = JsonConvert.SerializeObject(update);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Accounts/UpdateUserDetails", content);
+            return response.IsSuccessStatusCode;
+        }
+
         public static async Task<bool> LoginAsync(string email, string password)
         {
             var login = new Login()

@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +16,7 @@ namespace NewApp.Pages
     public partial class HomePage : ContentPage
     {
         public ObservableCollection<PopularProduct> ProductsCollection { get; set; }
+        public User user;
 
         public HomePage()
         {
@@ -57,7 +58,8 @@ namespace NewApp.Pages
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new RequestPickupPage());
+            var user = await ApiService.GetCurrentUser(Preferences.Get("userId", 0).ToString());
+            await Navigation.PushModalAsync(new CheckDetailsPage(user));
         }
 
         private void TapPickups_Tapped(object sender, EventArgs e)
