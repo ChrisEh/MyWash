@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NewApp.Pages.HomePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+
+        <Grid>
+            <StackLayout>
+                <Label Text="ImageButton"
+               FontSize="50"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+                    <RelativeLayout BackgroundColor="#222222" HeightRequest="210">
+                        <Image Source="main1" Aspect="Fill" />
+                    <StackLayout BackgroundColor="#222222" TranslationY="300" Opacity="0.8" Padding="10,5,10,5" MinimumWidthRequest="100">
+                            <Label XAlign="Center" TextColor="#F1F1F1" FontSize="Medium" VerticalTextAlignment="End" HorizontalOptions="CenterAndExpand"
+                                   Text="Make your life easier and let us clean your clothes for you! Excellent service guaranteed."/>
+                        <StackLayout Margin="10,10,20,20">
+                            <Button Text="Request pickup now" Clicked="Button_Clicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                    </RelativeLayout>
+            </StackLayout>
+            <Grid ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start"
+                  RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.RowSpan="4"
+                       Grid.ColumnSpan="3"
+                       Source="banner.png"
+                       Aspect="Fill" />
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="3">
+                    <Image HorizontalOptions="Start"
+                           Margin="20,20,0,0"
+                           Source="menu.png"
+                           HeightRequest="30">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="ImgMenu" Tapped="ImgMenu_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Grid HorizontalOptions="EndAndExpand"
+                          Margin="0,0,20,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Source="cart.png"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Grid.RowSpan="2"
+                               Grid.ColumnSpan="2" />
+                        <Frame Padding="1"
+                               CornerRadius="55"
+                               VerticalOptions="End"
+                               HorizontalOptions="Start"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Grid.RowSpan="2"
+                               BackgroundColor="#CE0B06">
+                            <Label x:Name="LblTotalItems"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   HeightRequest="25"
+                                   WidthRequest="25"
+                                   TextColor="White" />
+                        </Frame>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapCartIcon" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </StackLayout>
+                <Image Margin="0,15,0,0"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       Source="logo.png"
+                       Aspect="AspectFit"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Grid.RowSpan="3" />
+            </Grid>
+            <Grid x:Name="GridOverlay" IsVisible="False"
+                  ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.6*" />
+                    <ColumnDefinition Width="0.4*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout BackgroundColor="#202020"
+                             x:Name="SlMenu" >
+                    <Grid BackgroundColor="#2D2D30"
+                          HeightRequest="120">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="logo.png"
+                               Margin="5"
+                               VerticalOptions="Center" />
+                        <StackLayout Grid.Column="1"
+                                     VerticalOptions="Center"
+                                     Spacing="0"
+                                     Margin="15,0,15,0">
+                            <Label Text="Welcome"
+                                   FontSize="Large"
+                                   TextColor="White" />
+                            <Label x:Name="LblUserName"
+                                   FontSize="Small"
+                                   TextColor="White" />
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout Spacing="30"
+                                 Orientation="Horizontal"
+                                 Margin="20,0,0,0">
+                        <Image Source="order.png"
+                               HeightRequest="30"
+                               WidthRequest="30" />
+                        <Label Text="My Pickups"
+                               TextColor="White"
+                               HeightRequest="50"
+                               VerticalTextAlignment="Center"
+                               FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapPickups" Tapped="TapPickups_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                 Orientation="Horizontal"
+                                 Margin="20,0,0,0">
+                        <Image Source="address.png"
+                               HeightRequest="30"
+                               WidthRequest="30" />
+                        <Label Text="My Data"
+                               TextColor="White"
+                               HeightRequest="50"
+                               VerticalTextAlignment="Center"
+                               FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapMyData" Tapped="TapMyData_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                 Orientation="Horizontal"
+                                 Margin="20,0,0,0">
+                        <Image Source="contact.png"
+                               HeightRequest="30"
+                               WidthRequest="30" />
+                        <Label Text="Contact"
+                               TextColor="White"
+                               HeightRequest="50"
+                               VerticalTextAlignment="Center"
+                               FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapContact" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Spacing="30"
+                                 Orientation="Horizontal"
+                                 Margin="20,0,0,0">
+                        <Image Source="logout.png"
+                               HeightRequest="30"
+                               WidthRequest="30" />
+                        <Label Text="Logout"
+                               TextColor="White"
+                               HeightRequest="50"
+                               VerticalTextAlignment="Center"
+                               FontSize="20" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="TapLogout" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView Grid.Column="1" x:Name="BoxViewLayer">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapCloseMenu" Tapped="TapCloseMenu_Tapped"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
