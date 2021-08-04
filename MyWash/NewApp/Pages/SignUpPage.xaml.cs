@@ -1,10 +1,5 @@
 ﻿using NewApp.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,16 +21,17 @@ namespace NewApp.Pages
             }
             else
             {
-                var response = await ApiService.RegisterUserAsync(EntName.Text, EntEmail.Text, EntPassword.Text, EntPlace.Text, EntPostCode.Text, EntPhoneNumber.Text, EntStreetName.Text);
+                var response = await ApiService.RegisterUserAsync(EntName.Text, EntEmail.Text, EntPassword.Text, EntPlace.Text, 
+                    EntPostCode.Text, EntPhoneNumber.Text, EntStreetName.Text, EntHouseNumber.Text);
 
-                if (response)
+                if (response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Hi", "Your account has been created.", "Alright");
                     await Navigation.PushModalAsync(new LoginPage(EntEmail.Text, EntPassword.Text));
                 }
                 else
                 {
-                    await DisplayAlert("Oops", "Username or password entered is wrong.", "OK");
+                    await DisplayAlert("Oops", await response.Content.ReadAsStringAsync(), "OK");
                 }
             }
         }

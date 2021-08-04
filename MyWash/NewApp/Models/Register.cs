@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NewApp.Models
+﻿namespace NewApp.Models
 {
     public class Register
     {
@@ -13,5 +9,6 @@ namespace NewApp.Models
         public string PostCode { get; set; }
         public string PhoneNumber { get; set; }
         public string StreetName { get; set; }
+        public string HouseNumber { get; set; }
     }
 }

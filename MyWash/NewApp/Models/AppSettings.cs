@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 
 namespace NewApp.Models
 {
     public static class AppSettings
     {
-        public static string ApiUrl = "https://192.168.0.213:5001/api/";
+        // For some reason it is not possible to use localhost or 127.0.0.1, has to be local network ip.
+        public static string ApiUrl = "https://192.168.0.8:44369/api/";
 
         public static HttpClient GetClient()
         {

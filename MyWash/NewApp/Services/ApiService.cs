@@ -1,19 +1,17 @@
-﻿using NewApp.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using NewApp.Models;
+using Newtonsoft.Json;
 using Xamarin.Essentials;
 
 namespace NewApp.Services
 {
     public class ApiService
     {
-        public static async Task<bool> RegisterUserAsync(string name, string email, string password, string place, string postCode, string phoneNumber, string streetName)
+        public static async Task<HttpResponseMessage> RegisterUserAsync(string name, string email, string password, string place, string postCode, string phoneNumber, string streetName, string houseNumber)
         {
             var register = new Register()
             {
@@ -22,20 +20,22 @@ namespace NewApp.Services
                 Password = password,
                 Place = place,
                 PhoneNumber = phoneNumber,
-                StreetName = streetName
+                StreetName = streetName,
+                PostCode = postCode,
+                HouseNumber = houseNumber
             };
 
             var json = JsonConvert.SerializeObject(register);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await AppSettings.GetClient().PostAsync($"{AppSettings.ApiUrl}Accounts/Register", content);
+            var response = await AppSettings.GetClient().PostAsync($"{AppSettings.ApiUrl}Users/Register", content);
 
-            return true;
+            return response;
         }
 
         public static async Task<User> GetCurrentUser(string userId)
         {
             var httpClient = AppSettings.GetClient();
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Accounts/GetUser/{userId}");
+            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Users/GetUser/{userId}");
             return JsonConvert.DeserializeObject<User>(response);
         }
 
@@ -54,7 +54,7 @@ namespace NewApp.Services
 
             var json = JsonConvert.SerializeObject(update);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Accounts/UpdateUserDetails", content);
+            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Users/UpdateUserDetails", content);
             return response.IsSuccessStatusCode;
         }
 
@@ -69,7 +69,7 @@ namespace NewApp.Services
             var httpClient = AppSettings.GetClient();
             var json = JsonConvert.SerializeObject(login);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Accounts/Login", content);
+            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Users/Login", content);
 
             if (!response.IsSuccessStatusCode)
                 return false;
