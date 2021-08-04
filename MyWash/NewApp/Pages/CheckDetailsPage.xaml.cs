@@ -25,23 +25,23 @@ namespace NewApp.Pages
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var order = new Order()
-            {
-                UserId = Preferences.Get("userId", 0),
-                Phone = EntPhone.Text,
-                OrderPlaced = DateTime.Now
-            };
+            //var order = new Order()
+            //{
+            //    User = new User() {Id = new Guid(Preferences.Get("userId", 0).ToString()),
+            //    Phone = EntPhone.Text,
+            //    OrderPlaced = DateTime.Now
+            //};
 
-            var response = await ApiService.PlaceOrderAsync(order);
-            if (response != null)
-            {
-                await DisplayAlert("", "Your pickup id is " + response.OrderId, "OK");
-                Application.Current.MainPage = new NavigationPage(new HomePage());
-            }
-            else
-            {
-                await DisplayAlert("", "Something went wrong.", "Cancel");
-            }
+            //var response = await ApiService.PlaceOrderAsync(order);
+            //if (response != null)
+            //{
+            //    await DisplayAlert("", "Your pickup id is " + response.OrderId, "OK");
+            //    Application.Current.MainPage = new NavigationPage(new HomePage());
+            //}
+            //else
+            //{
+            //    await DisplayAlert("", "Something went wrong.", "Cancel");
+            //}
         }
 
         private async void TapBack_Tapped(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace NewApp.Pages
 
         private async void BtnConfirm_Clicked(object sender, EventArgs e)
         {
-            await ApiService.UpdateUserDetailsAsync(Preferences.Get("userId", 0).ToString(), EntStreet.Text,
+            await ApiService.UpdateUserDetailsAsync(Preferences.Get("userId", "0"), EntStreet.Text,
                 EntHouseNumber.Text, EntPostCode.Text, EntPlace.Text, EntPhone.Text);
         }
     }

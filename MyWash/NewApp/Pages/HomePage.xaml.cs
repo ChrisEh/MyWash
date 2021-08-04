@@ -23,15 +23,15 @@ namespace NewApp.Pages
             InitializeComponent();
 
             ProductsCollection = new ObservableCollection<PopularProduct>();
-            GetPopularProducts();
+            //GetPopularProducts();
         }
 
-        private async void GetPopularProducts()
-        {
-            var products = await ApiService.GetPopularProductsAsync();
+        //private async void GetPopularProducts()
+        //{
+        //    var products = await ApiService.GetPopularProductsAsync();
 
-            products.ForEach(p => ProductsCollection.Add(p));
-        }
+        //    products.ForEach(p => ProductsCollection.Add(p));
+        //}
 
         private async void ImgMenu_Tapped(object sender, EventArgs e)
         {
@@ -56,9 +56,9 @@ namespace NewApp.Pages
             GridOverlay.IsVisible = false;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void RequestPickupBtn_Clicked(object sender, EventArgs e)
         {
-            var user = await ApiService.GetCurrentUser(Preferences.Get("userId", 0).ToString());
+            var user = await ApiService.GetCurrentUser(Preferences.Get("userId", "0"));
             await Navigation.PushModalAsync(new CheckDetailsPage(user));
         }
 

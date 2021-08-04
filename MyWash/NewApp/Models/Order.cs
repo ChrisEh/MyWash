@@ -6,15 +6,14 @@ namespace NewApp.Models
 {
     public class Order
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        public User User { get; set; }
         public string FullName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public int OrderTotal { get; set; }
+        public double OrderTotal { get; set; }
         public DateTime OrderPlaced { get; set; }
         public bool IsOrderCompleted { get; set; }
-        public bool IsOrderCancelled { get; set; }
-        public int UserId { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -20,7 +20,7 @@
                             <Label XAlign="Center" TextColor="#F1F1F1" FontSize="Medium" VerticalTextAlignment="End" HorizontalOptions="CenterAndExpand"
                                    Text="Make your life easier and let us clean your clothes for you! Excellent service guaranteed."/>
                         <StackLayout Margin="10,10,20,20">
-                            <Button Text="Request pickup now" Clicked="Button_Clicked"/>
+                            <Button Text="Request pickup now" Clicked="RequestPickupBtn_Clicked"/>
                         </StackLayout>
                     </StackLayout>
                     </RelativeLayout>

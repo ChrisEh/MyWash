@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NewApp.Models
 {
     public class ShoppingCartItem
     {
-        public int Id { get; set; }
-        public double Price { get; set; }
-        public double TotalAmount { get; set; }
-        public int Qty { get; set; }
-        public string ProductName { get; set; }
+        public Guid Id { get; set; }
+        public User User { get; set; }
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
     }
 }

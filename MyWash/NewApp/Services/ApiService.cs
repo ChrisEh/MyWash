@@ -100,14 +100,14 @@ namespace NewApp.Services
             return JsonConvert.DeserializeObject<List<ProductByCategory>>(response);
         }
 
-        public static async Task<List<PopularProduct>> GetPopularProductsAsync()
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Products/popularproducts/");
-            return JsonConvert.DeserializeObject<List<PopularProduct>>(response);
-        }
+        //public static async Task<List<PopularProduct>> GetPopularProductsAsync()
+        //{
+        //    var httpClient = AppSettings.GetClient();
+        //    httpClient.DefaultRequestHeaders.Authorization = 
+        //        new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
+        //    var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Products/popularproducts/");
+        //    return JsonConvert.DeserializeObject<List<PopularProduct>>(response);
+        //}
 
         public static async Task<bool> AddItemsInCartAsync(AddToCart addToCart)
         {

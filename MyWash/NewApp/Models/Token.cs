@@ -8,7 +8,7 @@ namespace NewApp.Models
     {
         public string Access_token { get; set; }
         public string Aoken_type { get; set; }
-        public int User_Id { get; set; }
+        public string User_Id { get; set; }
         public string User_name { get; set; }
         public int Expires_in { get; set; }
         public int Creation_Time { get; set; }
