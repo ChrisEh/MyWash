@@ -35,7 +35,7 @@
                             <StackLayout Padding="20">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
-                                        <Label Text="Order No."
+                                        <Label Text="Pickup No."
                                                TextColor="Gray" />
                                         <Label TextColor="#CE0B06" 
                                                Text="{Binding Id}"/>
@@ -44,7 +44,7 @@
                                         <Label Text="Made on"
                                                TextColor="Gray" />
                                         <Label TextColor="Black" 
-                                               Text="{Binding OrderPlaced}"/>
+                                               Text="{Binding PickupPlaced}"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
@@ -52,7 +52,7 @@
                                            TextColor="Black" />
                                     <Label  HorizontalOptions="EndAndExpand"
                                             TextColor="Black" 
-                                            Text="{Binding OrderTotal, StringFormat='€{0}'}"/>
+                                            Text="{Binding PickupTotal, StringFormat='€{0}'}"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

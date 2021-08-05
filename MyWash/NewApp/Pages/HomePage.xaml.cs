@@ -3,9 +3,6 @@ using NewApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,17 +18,7 @@ namespace NewApp.Pages
         public HomePage()
         {
             InitializeComponent();
-
-            ProductsCollection = new ObservableCollection<PopularProduct>();
-            //GetPopularProducts();
         }
-
-        //private async void GetPopularProducts()
-        //{
-        //    var products = await ApiService.GetPopularProductsAsync();
-
-        //    products.ForEach(p => ProductsCollection.Add(p));
-        //}
 
         private async void ImgMenu_Tapped(object sender, EventArgs e)
         {

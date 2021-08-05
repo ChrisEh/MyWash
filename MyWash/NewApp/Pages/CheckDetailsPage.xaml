@@ -103,7 +103,7 @@
                            TextColor="White"
                            x:Name="EntPhone"
                            Keyboard="Numeric" />
-                    <Button Text="Confirm Details" Clicked="BtnConfirm_Clicked"/>
+                    <Button Text="Confirm Details and Request Pickup" Clicked="BtnConfirm_Clicked"/>
                 </StackLayout>                
             </Frame>
             

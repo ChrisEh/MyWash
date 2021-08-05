@@ -4,8 +4,8 @@ using System.Text;
 
 namespace NewApp.Models
 {
-    public class OrderResponse
+    public class PickupResponse
     {
-        public int OrderId { get; set; }
+        public string PickupId { get; set; }
     }
 }

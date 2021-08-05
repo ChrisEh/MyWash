@@ -15,19 +15,19 @@ namespace NewApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PickupsPage : ContentPage
     {
-        public ObservableCollection<OrderByUser> OrdersCollection { get; set; }
+        public ObservableCollection<PickupByUser> PickupsCollection { get; set; }
         public PickupsPage()
         {
             InitializeComponent();
-            OrdersCollection = new ObservableCollection<OrderByUser>();
+            PickupsCollection = new ObservableCollection<PickupByUser>();
             GetPickups();
         }
 
         private async void GetPickups()
         {
-            var orders = await ApiService.GetOrdersByUserAsync(Preferences.Get("userId", 0));
-            orders.ForEach(o => OrdersCollection.Add(o));
-            LvPickups.ItemsSource = OrdersCollection;
+            var pickups = await ApiService.GetPickupsByUserAsync(Preferences.Get("userId", 0));
+            pickups.ForEach(o => PickupsCollection.Add(o));
+            LvPickups.ItemsSource = PickupsCollection;
             var x = 0;
 
         }

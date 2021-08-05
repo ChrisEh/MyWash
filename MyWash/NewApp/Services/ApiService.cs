@@ -159,34 +159,34 @@ namespace NewApp.Services
             return response.IsSuccessStatusCode;
         }
 
-        public static async Task<OrderResponse> PlaceOrderAsync(Order order)
+        public static async Task<PickupResponse> PlacePickupAsync(Pickup pickup)
         {
             var httpClient = AppSettings.GetClient();
             httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var json = JsonConvert.SerializeObject(order);
+            var json = JsonConvert.SerializeObject(pickup);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Orders", content);
+            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Pickups", content);
             var jsonResult = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<OrderResponse>(jsonResult);
+            return JsonConvert.DeserializeObject<PickupResponse>(jsonResult);
         }
 
-        public static async Task<List<OrderByUser>> GetOrdersByUserAsync(int userId)
+        public static async Task<List<PickupByUser>> GetPickupsByUserAsync(int userId)
         {
             var httpClient = AppSettings.GetClient();
             httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Orders/OrdersByUser/{userId}");
-            return JsonConvert.DeserializeObject<List<OrderByUser>>(response);
+            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Pickups/PickupsByUser/{userId}");
+            return JsonConvert.DeserializeObject<List<PickupByUser>>(response);
         }
 
-        public static async Task<List<Order>> GetOrderDetailsAsync(int orderId)
+        public static async Task<List<Pickup>> GetPickupDetailsAsync(int pickupId)
         {
             var httpClient = AppSettings.GetClient();
             httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Orders/OrderDetails" + orderId);
-            return JsonConvert.DeserializeObject<List<Order>>(response);
+            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Pickups/PickupDetails" + pickupId);
+            return JsonConvert.DeserializeObject<List<Pickup>>(response);
         }
     }
 }
