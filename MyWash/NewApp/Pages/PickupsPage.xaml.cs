@@ -1,11 +1,7 @@
 ﻿using NewApp.Models;
 using NewApp.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,11 +21,10 @@ namespace NewApp.Pages
 
         private async void GetPickups()
         {
-            var pickups = await ApiService.GetPickupsByUserAsync(Preferences.Get("userId", 0));
+            var pickups = await ApiService.GetPickupsByUserAsync(Preferences.Get("userId", "0"));
             pickups.ForEach(o => PickupsCollection.Add(o));
             LvPickups.ItemsSource = PickupsCollection;
             var x = 0;
-
         }
 
         private async void TapBack_Tapped(object sender, EventArgs e)

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="NewApp.Pages.PickupsPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#222222">
             <Grid Margin="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
@@ -21,11 +21,12 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Grid.Column="1"
-                       TextColor="#CE0B06"
+                       TextColor="White"
                        Text="Pickup History"
                        FontSize="Large"
                        FontAttributes="Bold"
-                       HorizontalTextAlignment="Center" />
+                       HorizontalTextAlignment="Center" 
+                       HeightRequest="110"/>
             </Grid>
             <ListView x:Name="LvPickups"
                       HasUnevenRows="True">
@@ -34,25 +35,29 @@
                         <ViewCell>
                             <StackLayout Padding="20">
                                 <StackLayout Orientation="Horizontal">
-                                    <StackLayout>
-                                        <Label Text="Pickup No."
-                                               TextColor="Gray" />
-                                        <Label TextColor="#CE0B06" 
-                                               Text="{Binding Id}"/>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <Label Text="Posted"
+                                               TextColor="White" />
+                                        <Label TextColor="Gray" 
+                                               Text="{Binding PickupPlaced}"/>
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="EndAndExpand">
-                                        <Label Text="Made on"
-                                               TextColor="Gray" />
-                                        <Label TextColor="Black" 
+                                        <Label Text="Placed"
+                                               TextColor="White" />
+                                        <Label TextColor="Gray" 
                                                Text="{Binding PickupPlaced}"/>
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <Label Text="Status"
+                                               TextColor="White" />
+                                        <Label TextColor="Gray" 
+                                               Text="{Binding Status}"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Total"
-                                           TextColor="Black" />
                                     <Label  HorizontalOptions="EndAndExpand"
-                                            TextColor="Black" 
-                                            Text="{Binding PickupTotal, StringFormat='€{0}'}"/>
+                                            TextColor="White" 
+                                            Text="{Binding PickupTotal, StringFormat='Total € {0}'}"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

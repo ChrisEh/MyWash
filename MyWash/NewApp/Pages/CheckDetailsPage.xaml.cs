@@ -24,10 +24,10 @@ namespace NewApp.Pages
             _user = user;
         }
 
-        private async void RequestPickupBtnClicked(object sender, EventArgs e)
-        {
+        //private async void RequestPickupBtnClicked(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private async void TapBack_Tapped(object sender, EventArgs e)
         {

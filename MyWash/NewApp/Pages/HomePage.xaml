@@ -7,7 +7,6 @@
              x:Class="NewApp.Pages.HomePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-
         <Grid>
             <StackLayout>
                 <Label Text="ImageButton"
@@ -67,31 +66,6 @@
                             <ColumnDefinition Width="4*" />
                             <ColumnDefinition Width="6*" />
                         </Grid.ColumnDefinitions>
-                        <Image VerticalOptions="Center"
-                               HorizontalOptions="Center"
-                               Source="cart.png"
-                               Grid.Row="1"
-                               Grid.Column="0"
-                               Grid.RowSpan="2"
-                               Grid.ColumnSpan="2" />
-                        <Frame Padding="1"
-                               CornerRadius="55"
-                               VerticalOptions="End"
-                               HorizontalOptions="Start"
-                               Grid.Row="0"
-                               Grid.Column="1"
-                               Grid.RowSpan="2"
-                               BackgroundColor="#CE0B06">
-                            <Label x:Name="LblTotalItems"
-                                   VerticalTextAlignment="Center"
-                                   HorizontalTextAlignment="Center"
-                                   HeightRequest="25"
-                                   WidthRequest="25"
-                                   TextColor="White" />
-                        </Frame>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapCartIcon" />
-                        </Grid.GestureRecognizers>
                     </Grid>
                 </StackLayout>
                 <Image Margin="0,15,0,0"

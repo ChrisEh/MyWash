@@ -55,6 +55,7 @@ namespace NewApp.Services
             var json = JsonConvert.SerializeObject(update);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Users/UpdateUserDetails", content);
+            
             return response.IsSuccessStatusCode;
         }
 
@@ -79,26 +80,29 @@ namespace NewApp.Services
             Preferences.Set("accessToken", result.Access_token);
             Preferences.Set("userId", result.User_Id);
             Preferences.Set("userName", result.User_name);
+            
             return true;
         }
 
-        public static async Task<Product> GetProductByIdAsync(int productId)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Products/{productId}");
-            return JsonConvert.DeserializeObject<Product>(response);
-        }
+        //public static async task<product> getproductbyidasync(int productid)
+        //{
+        //    var httpclient = appsettings.getclient();
+        //    httpclient.defaultrequestheaders.authorization =
+        //        new authenticationheadervalue("bearer", preferences.get("accesstoken", string.empty));
+        //    var response = await httpclient.getstringasync($"{appsettings.apiurl}products/{productid}");
 
-        public static async Task<List<ProductByCategory>> GetProductByCategoryAsync(int categoryId)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization = 
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Products/productsbycategory/{categoryId}");
-            return JsonConvert.DeserializeObject<List<ProductByCategory>>(response);
-        }
+        //    return jsonconvert.deserializeobject<product>(response);
+        //}
+
+        //public static async task<list<productbycategory>> getproductbycategoryasync(int categoryid)
+        //{
+        //    var httpclient = appsettings.getclient();
+        //    httpclient.defaultrequestheaders.authorization =
+        //        new authenticationheadervalue("bearer", preferences.get("accesstoken", string.empty));
+        //    var response = await httpclient.getstringasync($"{appsettings.apiurl}products/productsbycategory/{categoryid}");
+
+        //    return jsonconvert.deserializeobject<list<productbycategory>>(response);
+        //}
 
         //public static async Task<List<PopularProduct>> GetPopularProductsAsync()
         //{
@@ -109,56 +113,6 @@ namespace NewApp.Services
         //    return JsonConvert.DeserializeObject<List<PopularProduct>>(response);
         //}
 
-        public static async Task<bool> AddItemsInCartAsync(AddToCart addToCart)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var json = JsonConvert.SerializeObject(addToCart);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}shoppingCartItems", content);
-
-            if (!response.IsSuccessStatusCode)
-                return false;
-            return true;
-        }
-
-        public static async Task<CartSubTotal> GetCartSubTotalAsync(int userId)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}shoppingCartItems/SubTotal/{userId}");
-            return JsonConvert.DeserializeObject<CartSubTotal>(response);
-        }
-
-        public static async Task<List<ShoppingCartItem>> GetShoppingCartItemsAsync(int userId)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}shoppingCartItems/{userId}");
-            return JsonConvert.DeserializeObject<List<ShoppingCartItem>>(response);
-        }
-
-        public static async Task<TotalCartItems> GetTotalCartItemsAsync(int userId)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}shoppingCartItems/TotalItems/{userId}");
-            return JsonConvert.DeserializeObject<TotalCartItems>(response);
-        }
-
-        public static async Task<bool> ClearShoppingCartAsync(int userId)
-        {
-            var httpClient = AppSettings.GetClient();
-            httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
-            var response = await httpClient.DeleteAsync($"{AppSettings.ApiUrl}shoppingCartItems/{userId}");
-            return response.IsSuccessStatusCode;
-        }
-
         public static async Task<PickupResponse> PlacePickupAsync(Pickup pickup)
         {
             var httpClient = AppSettings.GetClient();
@@ -168,15 +122,17 @@ namespace NewApp.Services
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Pickups", content);
             var jsonResult = await response.Content.ReadAsStringAsync();
+
             return JsonConvert.DeserializeObject<PickupResponse>(jsonResult);
         }
 
-        public static async Task<List<PickupByUser>> GetPickupsByUserAsync(int userId)
+        public static async Task<List<PickupByUser>> GetPickupsByUserAsync(string userId)
         {
             var httpClient = AppSettings.GetClient();
             httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Pickups/PickupsByUser/{userId}");
+            
             return JsonConvert.DeserializeObject<List<PickupByUser>>(response);
         }
 
@@ -186,6 +142,7 @@ namespace NewApp.Services
             httpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("bearer", Preferences.Get("accessToken", string.Empty));
             var response = await httpClient.GetStringAsync($"{AppSettings.ApiUrl}Pickups/PickupDetails" + pickupId);
+            
             return JsonConvert.DeserializeObject<List<Pickup>>(response);
         }
     }
