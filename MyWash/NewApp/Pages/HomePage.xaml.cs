@@ -1,8 +1,6 @@
 ﻿using NewApp.Models;
 using NewApp.Services;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,7 +10,6 @@ namespace NewApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public ObservableCollection<PopularProduct> ProductsCollection { get; set; }
         public User user;
 
         public HomePage()
@@ -54,9 +51,9 @@ namespace NewApp.Pages
             Navigation.PushModalAsync(new PickupsPage());
         }
 
-        private void TapMyData_Tapped(object sender, EventArgs e)
+        private void TapContact_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new MyDataPage());
+            Navigation.PushModalAsync(new ContactPage());
         }
     }
 }

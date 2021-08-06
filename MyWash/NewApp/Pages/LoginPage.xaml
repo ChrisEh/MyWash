@@ -5,11 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="NewApp.Pages.LoginPage"
-             BackgroundColor="#F7F5F4"
+             BackgroundColor="Black"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout Spacing="20"
-                     Margin="25">
+                     Margin="25"
+                     >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
@@ -25,7 +26,7 @@
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Grid.Column="1"
-                       TextColor="#CE0B06"
+                       TextColor="White"
                        Text="LOGIN"
                        FontSize="Large"
                        FontAttributes="Bold"
@@ -35,29 +36,28 @@
             </Grid>
             <Frame HasShadow="True"
                    Padding="25"
-                   Margin="0,80,0,50">
+                   Margin="0,80,0,50"
+                   BackgroundColor="#222222">
                 <StackLayout Margin="0,60,0,60">
                     <Label Text="Sign In"
                            FontAttributes="Bold"
                            FontSize="Title"
                            HorizontalTextAlignment="Center"
-                           TextColor="#CE0B06" />
+                           TextColor="White" />
                     <Entry Placeholder="Email"
-                           PlaceholderColor="#80574D"
-                           TextColor="#80574D"
+                           PlaceholderColor="#F1F1F1"
+                           TextColor="#F1F1F1"
                            x:Name="EntEmail"
                            Keyboard="Email" />
                     <Entry Placeholder="Password"
-                           PlaceholderColor="#80574D"
-                           TextColor="#80574D"
+                           PlaceholderColor="#F1F1F1"
+                           TextColor="#F1F1F1"
                            IsPassword="True"
                            x:Name="EntPassword"
                            Keyboard="Default" />
                 </StackLayout>
             </Frame>
             <Button Text="Login"
-                    BackgroundColor="#CE0B06"
-                    TextColor="White"
                     x:Name="BtnLogin"
                     Clicked="BtnLogin_Clicked"/>
         </StackLayout>

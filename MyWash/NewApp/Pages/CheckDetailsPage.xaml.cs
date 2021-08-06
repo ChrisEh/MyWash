@@ -24,11 +24,6 @@ namespace NewApp.Pages
             _user = user;
         }
 
-        //private async void RequestPickupBtnClicked(object sender, EventArgs e)
-        //{
-
-        //}
-
         private async void TapBack_Tapped(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
@@ -51,12 +46,12 @@ namespace NewApp.Pages
             var response = await ApiService.PlacePickupAsync(pickup);
             if (response != null)
             {
-                await DisplayAlert("", "Your order is placed. Your pickup id is " + response.PickupId, "OK");
+                await DisplayAlert("", "Your request got accepted. A driver is on his way.", "OK");
                 Application.Current.MainPage = new NavigationPage(new HomePage());
             }
             else
             {
-                await DisplayAlert("", "Something went wrong.", "Cancel");
+                await DisplayAlert("", "There is already an active pickup. You cannot order more than one.", "Cancel");
             }
         }
     }

@@ -36,29 +36,28 @@
                             <StackLayout Padding="20">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout HorizontalOptions="EndAndExpand">
-                                        <Label Text="Posted"
-                                               TextColor="White" />
-                                        <Label TextColor="Gray" 
-                                               Text="{Binding PickupPlaced}"/>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="EndAndExpand">
                                         <Label Text="Placed"
+                                               FontSize="Large"
                                                TextColor="White" />
-                                        <Label TextColor="Gray" 
+                                        <Label TextColor="White" 
                                                Text="{Binding PickupPlaced}"/>
                                     </StackLayout>
                                     <StackLayout HorizontalOptions="EndAndExpand">
                                         <Label Text="Status"
+                                               FontSize="Large"
+                                               WidthRequest="150"
                                                TextColor="White" />
-                                        <Label TextColor="Gray" 
-                                               Text="{Binding Status}"/>
+                                        <Label TextColor="White" 
+                                               Text="{Binding PickupStatus}"/>
                                     </StackLayout>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label  HorizontalOptions="EndAndExpand"
-                                            TextColor="White" 
-                                            Text="{Binding PickupTotal, StringFormat='Total € {0}'}"/>
-                                </StackLayout>
+                                    <StackLayout HorizontalOptions="EndAndExpand">
+                                        <Label Text="Total"
+                                               FontSize="Large"
+                                               TextColor="White" />
+                                        <Label TextColor="White" 
+                                               Text="{Binding PickupTotal, StringFormat='€ {0}'}"/>
+                                    </StackLayout>
+                            </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -123,7 +123,9 @@ namespace NewApp.Services
             var response = await httpClient.PostAsync($"{AppSettings.ApiUrl}Pickups", content);
             var jsonResult = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<PickupResponse>(jsonResult);
+            if (response.IsSuccessStatusCode)
+                return JsonConvert.DeserializeObject<PickupResponse>(jsonResult);
+            return null;
         }
 
         public static async Task<List<PickupByUser>> GetPickupsByUserAsync(string userId)

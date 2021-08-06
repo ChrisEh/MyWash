@@ -24,7 +24,6 @@ namespace NewApp.Pages
             var pickups = await ApiService.GetPickupsByUserAsync(Preferences.Get("userId", "0"));
             pickups.ForEach(o => PickupsCollection.Add(o));
             LvPickups.ItemsSource = PickupsCollection;
-            var x = 0;
         }
 
         private async void TapBack_Tapped(object sender, EventArgs e)

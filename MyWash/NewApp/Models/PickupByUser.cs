@@ -1,10 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace NewApp.Models
 {
+    public enum PickupStatus
+    {
+        Requested,
+        Washing,
+        OutForDelivery,
+        PaymentPending,
+        Finished
+    }
+
     public class PickupByUser
     {
         public string Id { get; set; }
@@ -16,5 +22,6 @@ namespace NewApp.Models
         public bool IsPickupCompleted { get; set; }
         public int UserId { get; set; }
         public object PickupDetails { get; set; }
+        public PickupStatus PickupStatus { get; set; }
     }
 }

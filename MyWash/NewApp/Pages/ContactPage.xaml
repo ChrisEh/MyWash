@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NewApp.Pages.ContactPage">
+
+    <ScrollView>
+        <StackLayout Padding="24,48,24,24" BackgroundColor="Black" >
+            <Frame HasShadow="False"
+                   HorizontalOptions="Center"
+                   Padding="0"
+                   WidthRequest="150"
+                   HeightRequest="150"
+                   CornerRadius="20"
+                   IsClippedToBounds="True"
+                   >
+
+                <Image Source="mywash.png"/>
+            </Frame>
+            <Label HorizontalOptions="Center"
+                   Text="{Binding Contact.Name}" TextColor="White"/>
+            <Grid RowSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="44"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="44"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Phone & SMS-->
+                <ImageButton Source="phone.png" Grid.Row="0" VerticalOptions="Center"
+                         Command="{Binding PhoneCommand}" BackgroundColor="Transparent" d:BackgroundColor="White"/>
+                <Label Grid.Column="1" Grid.Row="0"
+                   VerticalOptions="Center"
+                   Text="{Binding Contact.PhoneNumber}" TextColor="White"/>
+                <ImageButton Source="sms.png" Grid.Row="0" Grid.Column="2" VerticalOptions="Center"
+                         Command="{Binding SmsCommand}" BackgroundColor="Transparent" d:BackgroundColor="White"/>
+
+                <!--Email-->
+                <ImageButton Source="email.png" Grid.Row="1"  VerticalOptions="Center"
+                         Command="{Binding EmailCommand}" BackgroundColor="Transparent" d:BackgroundColor="White"/>
+
+                <Label Grid.Column="1" Grid.Row="1"
+                   VerticalOptions="Center"
+                   Text="{Binding Contact.Email}" TextColor="White"/>
+
+                <!--Address-->
+                <ImageButton Source="navigation.png" Grid.Row="2" VerticalOptions="Center"
+                         Command="{Binding NavigateCommand}" BackgroundColor="Transparent" d:BackgroundColor="White"/>
+
+                <StackLayout Grid.Column="1" Grid.Row="2" VerticalOptions="Center">
+                    <Label Text="{Binding Contact.Address}" TextColor="White"/>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Contact.City}" TextColor="White"/>
+                                <Span Text=" "/>
+                                <Span Text="{Binding Contact.State}" TextColor="White"/>
+                                <Span Text=", "/>
+                                <Span Text="{Binding Contact.ZipCode}" TextColor="White"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
